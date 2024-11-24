@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.cache/
+.env
+lerna-debug.log
+db_data/
+.git/
