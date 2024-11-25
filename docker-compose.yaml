@@ -12,6 +12,16 @@ services:
     ports:
       - 5000:5000
 
+  simulation:
+    container_name: simulation
+    build:
+      context: .
+      dockerfile: ./docker/simulation/Dockerfile
+    env_file:
+      - ./packages/simulation/.env
+    ports:
+      - 5001:5001
+
   frontend:
     build:
       context: .

@@ -18,22 +18,15 @@ export class PhishingService {
   }
 
   async sendAttempt(attemptDto: CreateAttemptDto) {
-    const candidateAttempt = await this.phishingAttemptRepository.findOne({
-      email: attemptDto.email,
-    });
-
-    if (candidateAttempt) {
-      throw new BadRequestException("Phishing attempt already exists");
-    }
-
     const attempt = await this.phishingAttemptRepository.create({
       email: attemptDto.email,
       status: "pending",
     });
 
-    const phishingLink = `${process.env.API_URL}/phishing/resolve?id=${attempt._id}`;
-
-    await this.mailService.sendPhishingEmail(attempt.email, phishingLink);
+    await this.mailService.sendPhishingEmail({
+      to: attempt.email,
+      attemptId: attempt.id,
+    });
 
     return attempt;
   }
