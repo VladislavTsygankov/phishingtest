@@ -30,16 +30,22 @@ Go to the root folder
 
 `cd phishingtest`
 
-create `.env` file in `./packages/phishing` with following example
+create `.env` file in `./packages/phishing` and `./packages/simulation` with following examples
 
 ```
 PORT=5000
 MONGODB_URL=mongodb://mongodb:27017/
 MONGODB_USER=root
 MONGODB_PASSWORD=password
+SIMULATION_API_URL=http://simulation:5001
+CORS_ORIGINS=http://localhost:3000
+```
+
+```
+PORT=5001
 NODEMAILER_USER=tsygankov.vladislav.v@gmail.com
 NODEMAILER_PASSWORD="pcjuvekecbravrhl"
-API_URL=http://localhost:5000
+RESOLVE_API_URL=http://localhost:5000
 CORS_ORIGINS=http://localhost:3000
 ```
 
